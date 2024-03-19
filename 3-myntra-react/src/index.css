@@ -120,6 +120,7 @@ header {
   background: #fafbfc;
   display: flex;
   justify-content: space-evenly;
+  width: 100%S;
 }
 
 .footer_column {
