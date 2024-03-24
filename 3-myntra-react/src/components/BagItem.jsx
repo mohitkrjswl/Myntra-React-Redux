@@ -1,4 +1,14 @@
+import { useDispatch } from "react-redux";
+import { RiDeleteBin5Fill } from "react-icons/ri";
+import { bagActions } from "../store/bagSlice";
+
 const BagItem = ({ item }) => {
+  const dispatch = useDispatch();
+
+  const handleRemoveItem = () => {
+    dispatch(bagActions.removeFromBag(item.id));
+  };
+
   return (
     <div className="bag-item-container">
       <div className="item-left-part">
@@ -8,7 +18,7 @@ const BagItem = ({ item }) => {
         <div className="company">{item.company}</div>
         <div className="item-name">{item.item_name}</div>
         <div className="price-container">
-          <span className="current-price">Rs{item.current_price}</span>
+          <span className="current-price">Rs {item.current_price}</span>
           <span className="original-price">Rs {item.original_price}</span>
           <span className="discount-percentage">
             ({item.discount_percentage}% OFF)
@@ -24,13 +34,11 @@ const BagItem = ({ item }) => {
         </div>
       </div>
 
-      <div
-        className="remove-from-cart"
-        onClick={() => console.log("Item Removed from cart")}
-      >
-        X
+      <div className="remove-from-cart" onClick={handleRemoveItem}>
+        <RiDeleteBin5Fill />
       </div>
     </div>
   );
 };
+
 export default BagItem;
